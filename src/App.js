@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import Table from "./Table";
 function App() {
+  const [rows, setRows] = useState(1);
+  const [cols, setCols] = useState(1);
+  const [displayTable, setDisplayTable] = useState(false);
+  const handleRowsAndCols = (e) => {
+    e.preventDefault();
+    setDisplayTable(true);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <form onSubmit={handleRowsAndCols}>
+        <input
+          type="number"
+          placeholder="rows"
+          required
+          min="1"
+          value={rows}
+          onChange={(e) => {
+            setRows(e.target.value);
+          }}
+        />
+        <input
+          type="number"
+          placeholder="cols"
+          required
+          min="1"
+          value={cols}
+          onChange={(e) => {
+            setCols(e.target.value);
+          }}
+        />
+        <button type="submit">Go</button>
+      </form>
+
+      {displayTable && <Table row={rows} col={cols} />}
+    </>
   );
 }
 

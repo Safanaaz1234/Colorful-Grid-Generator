@@ -1,0 +1,15 @@
+table,tr,td{
+    border:2px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    padding:50px;
+    margin-top:15px;
+}
+div{
+    margin-top:15px;
+}
+body{
+    margin:10px;
+}
+form > input{
+    margin-right:20px;
+}
